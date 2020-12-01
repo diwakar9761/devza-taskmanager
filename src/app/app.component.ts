@@ -16,9 +16,6 @@ export class AppComponent implements OnInit {
   public isLoading = false;
   public searchText = '';
   public taskData = [];
-  // public lowPriorityData = [];
-  // public mediumPriorityData = [];
-  // public highPriorityData = [];
   public lowPriorityTotalData = [];
   public mediumPriorityTotalData = [];
   public highPriorityTotalData = [];
@@ -92,9 +89,9 @@ export class AppComponent implements OnInit {
   filterList(event) : void {
     if(event.target.value) {
       let searchText = event.target.value.toLowerCase();
-      this.taskData['low'] = this.lowPriorityTotalData.filter(it => it.message.includes(searchText));
-      this.taskData['medium'] = this.mediumPriorityTotalData.filter(it => it.message.includes(searchText));
-      this.taskData['high'] = this.highPriorityTotalData.filter(it => it.message.includes(searchText));
+      this.taskData['low'] = this.lowPriorityTotalData.filter(it => it.message.toLowerCase().includes(searchText));
+      this.taskData['medium'] = this.mediumPriorityTotalData.filter(it => it.message.toLowerCase().includes(searchText));
+      this.taskData['high'] = this.highPriorityTotalData.filter(it => it.message.toLowerCase().includes(searchText));
     } else {
       this.taskData['low'] = this.lowPriorityTotalData; 
       this.taskData['medium'] = this.mediumPriorityTotalData; 
