@@ -1,6 +1,8 @@
+<!-- Single Table starts here -->
 <table matSort (matSortChange)="sortData($event)">
   <thead>
     <tr>
+      <!-- table headings -->
       <th mat-sort-header="id"> # </th>
       <th mat-sort-header="message"> Task </th>
       <th mat-sort-header="due_date"> Due date </th>
@@ -22,8 +24,13 @@
       </td>
     </tr>
   </tbody>
+  <!-- section if no data -->
   <div *ngIf="taskData && taskData.length == 0">
     <p> No Data </p>
   </div>
+  <!-- section if no data -->
 </table>
+<!-- Single Table starts here -->
+
+<!-- loader -->
 <app-loader [loaderHide]="!isLoading"> </app-loader>

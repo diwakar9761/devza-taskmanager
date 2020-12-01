@@ -1,3 +1,4 @@
+<!-- add task popup starts -->
 <div class="add-task" style="position: relative">
     <h2 mat-dialog-title> 
         {{this.editMode ? 'Edit task' : 'Add task'}}
@@ -51,11 +52,14 @@
 
         </form>
     </mat-dialog-content>
+
+    <!-- add task action buttons -->
     <mat-dialog-actions align="end">
         <button mat-raised-button mat-dialog-close> Cancel </button>
         <button mat-raised-button color="primary" [mat-dialog-close]="taskForm" [disabled]="!taskForm.valid">
             {{this.editMode ? 'Save task' : 'Add task'}}
         </button>
     </mat-dialog-actions>
+    <!-- add task action buttons -->
 
 </div>
