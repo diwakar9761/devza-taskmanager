@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+
+body {
+    margin: 0;
+    font-family: 'Roboto';
+    font-size: 14px;
+}
+.mat-sort-header-arrow {
+    color: #fff;
+}
+
+@media only screen and (max-width: 786px) {
+    
+}

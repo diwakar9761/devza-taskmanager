@@ -1,0 +1,61 @@
+<div class="add-task" style="position: relative">
+    <h2 mat-dialog-title> 
+        {{this.editMode ? 'Edit task' : 'Add task'}}
+    </h2>
+
+    <mat-dialog-content class="mat-typography">
+        <form class="p-24 mr-24" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="taskForm"
+            [formGroup]="taskForm">
+
+            <!-- task name column -->
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label> Task name </mat-label>
+                    <input formControlName="message" matInput type="text">
+                </mat-form-field>
+            </div>
+
+            <!-- task priority column -->
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label> Priority </mat-label>
+                    <mat-select formControlName="priority">
+                        <mat-option selected disabled> Select priority </mat-option>
+                        <mat-option *ngFor="let priority of priorityValues" [value]=priority.value>
+                            {{priority.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- task assign to column -->
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label> Assigned to </mat-label>
+                    <mat-select formControlName="assigned_to">
+                        <mat-option selected disabled> Select user </mat-option>
+                        <mat-option *ngFor="let user of userList" [value]=user.id>
+                            {{user.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- task due date column -->
+            <div fxLayout="row wrap" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <div class="custom-input">
+                    <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Due date" formControlName="due_date">
+                    <owl-date-time min="date" #dt1></owl-date-time>
+                </div>
+            </div>
+
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button mat-dialog-close> Cancel </button>
+        <button mat-raised-button color="primary" [mat-dialog-close]="taskForm" [disabled]="!taskForm.valid">
+            {{this.editMode ? 'Save task' : 'Add task'}}
+        </button>
+    </mat-dialog-actions>
+
+</div>

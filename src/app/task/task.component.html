@@ -1,0 +1,29 @@
+<table matSort (matSortChange)="sortData($event)">
+  <thead>
+    <tr>
+      <th mat-sort-header="id"> # </th>
+      <th mat-sort-header="message"> Task </th>
+      <th mat-sort-header="due_date"> Due date </th>
+      <th> Priority </th>
+      <th mat-sort-header="assigned_name"> Assignee </th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of taskData" cdkDrag [cdkDragData]="task">
+      <td> {{task.id}} </td>
+      <td> {{task.message}} </td>
+      <td> {{task.due_date}} </td>
+      <td> <span class="priority" [ngClass]="getPriority(task.priority)" >{{priority}}</span> </td>
+      <td> {{task.assigned_name ? task.assigned_name : '-'}} </td>
+      <td>  
+        <mat-icon (click)="editTask(task)" > edit </mat-icon>
+        <mat-icon (click)="deleteTask(task)"> delete </mat-icon>
+      </td>
+    </tr>
+  </tbody>
+  <div *ngIf="taskData && taskData.length == 0">
+    <p> No Data </p>
+  </div>
+</table>
+<app-loader [loaderHide]="!isLoading"> </app-loader>
